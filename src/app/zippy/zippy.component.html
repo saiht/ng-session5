@@ -1,25 +1,17 @@
-<div class="panel panel-default">
+<div class="panel panel-default zippy">
   <!-- Default panel contents -->
-  <div class="panel-heading" (ng-click)="toggle()">
+  <div class="panel-heading zippy-title" (click)="toggle()">
       <a>
-          Panel heading 
+          {{ title }}
             <span class=" pull-right glyphicon" [ngClass]="{
-                'glyphicon-chevron-up': 'isOpen',
-                'glyphicon-chevron-down': '!isOpen'
+                'glyphicon-chevron-up': 'isExpanded',
+                'glyphicon-chevron-down': '!isExpanded'
         }"></span>
       </a>
   </div>
-  <div class="panel-body">
-    <p>...</p>
+  <div *ngIf="isExpanded" class="panel-body">
+    <div class="zippy-content">
+      <ng-content></ng-content>
+    </div>
   </div>
-
-  <!-- List group -->
-  <!--<ul class="list-group">
-    <li class="list-group-item">Panel Heading</li>
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>-->
 </div>
