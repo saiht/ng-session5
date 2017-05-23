@@ -5,11 +5,12 @@
         </h2>
     </div>
     <div class="contact-content">
-        <form>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f.form)">
             <div class="form-group">
                 <label for="firstName">Your firstname :</label>
                 <input ngModel name="firstName" #firstName="ngModel" id="firstName" type="text" class="form-control input-sm" placeholder="Enter your firstname here"
-                    required>
+                    required minlength="3"> 
+                    <!--{{ firstName.errors | json}}  to see the object -->
                 <div *ngIf="!firstName.valid && firstName.touched" class="alert alert-danger">Input invalid</div>
             </div>
 
@@ -19,9 +20,7 @@
                     required></textarea>
                 <div *ngIf="!message.valid && message.touched" class="alert alert-danger">Input invalid</div>
             </div>
-            <button [ngClass]="{
-                'disabled': message.invalid || firstName.invalid
-            }" class="btn btn-primary" type="submit">
+            <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
             Submit
             </button>
         </form>
