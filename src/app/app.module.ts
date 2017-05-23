@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ZippyModule } from './zippy/zippy.module';
 import { ContactModule } from './contact/contact.module'
+import { SubscriptionModule } from './subscription/subscription.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ContactModule } from './contact/contact.module'
     FormsModule,
     HttpModule,
     ZippyModule,
-    ContactModule
+    ContactModule,
+    SubscriptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,38 @@
+<div class="subscription">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f.form)">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input ngModel name="name" #name="ngModel" id="name" type="text" class="form-control input-sm" placeholder="Type your name here"
+                required minlength="3">
+            <div class="alert alert-danger" *ngIf="name.errors && name.touched">
+                <span *ngIf="name.errors.required">Invalid input for name</span>
+                <span *ngIf="name.errors.minlength">Name should be minimum {{ name.errors.minlength.requiredLength }} characters length</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input ngModel name="email" #email="ngModel" id="email" type="text" class="form-control input-sm" placeholder="Type your email here"
+                required email>
+            <div class="alert alert-danger" *ngIf="email.errors && email.touched">
+                <span *ngIf="email.errors.required">Invalid input for email</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="frequency">Frequency of emails:</label>
+            <select name="frequency" id="frequency" #frequency="ngModel" ngModel required>
+                <option value="1">Daily</option>
+                <option value="2">Weekly</option>
+                <option value="3">Monthly</option>
+            </select>
+             <!--{{ frequency.errors | json }}-->
+
+            <div class="alert alert-danger" *ngIf="frequency.errors?.required && frequency.touched">
+                <span *ngIf="frequency.errors.required">You must choice an option</span>
+            </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="!f.valid" type="submit">Submit</button>
+    </form>
+</div>
