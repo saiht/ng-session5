@@ -15,7 +15,7 @@
             <input ngModel name="email" #email="ngModel" id="email" type="text" class="form-control input-sm" placeholder="Type your email here"
                 required email>
             <div class="alert alert-danger" *ngIf="email.errors && email.touched">
-                <span *ngIf="email.errors.required">Invalid input for email</span>
+                <span *ngIf="email.errors.email">Please enter a valid email</span>
             </div>
         </div>
 
